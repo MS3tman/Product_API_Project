@@ -47,16 +47,16 @@ Route::post('/login',[PassportAuthController::class, 'login']);
 Route::middleware('auth:api')->group(function(){
 
     //for userinfo
-    Route::get('/userinfo',[ProductController::class, 'UserInfo']);
+    Route::get('/userinfo',[PassportAuthController::class, 'UserInfo']);
     //for create product
-    Route::post('/product/create',[ProductController::class, 'store']);
+    Route::post('/createproduct',[ProductController::class, 'store']);
     //for show all data 
-    Route::get('/product/all',[ProductController::class, 'index']);
+    Route::get('/products',[ProductController::class, 'index']);
     //for show one product
-    Route::get('/product/show',[ProductController::class, 'show']);
+    Route::get('/showproduct/{id}',[ProductController::class, 'show']);
     //for update product
-    Route::post('/product/update',[ProductController::class, 'update']);
+    Route::put('/updateproduct/{id}',[ProductController::class, 'update']);
     //for delete product
-    Route::post('/product/delete',[ProductController::class, 'delete']);
+    Route::delete('/deleteproduct/{id}',[ProductController::class, 'delete']);
 
 });
