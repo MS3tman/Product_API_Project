@@ -46,17 +46,23 @@ Route::post('/login',[PassportAuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function(){
 
+    // //for userinfo
+    // Route::get('/userinfo',[PassportAuthController::class, 'UserInfo']);
+    // //for create product
+    // Route::post('/createproduct',[ProductController::class, 'store']);
+    // //for show all data 
+    // Route::get('/products',[ProductController::class, 'index']);
+    // //for show one product
+    // Route::get('/showproduct/{id}',[ProductController::class, 'show']);
+    // //for update product
+    // Route::put('/updateproduct/{id}',[ProductController::class, 'update']);
+    // //for delete product
+    // Route::delete('/deleteproduct/{id}',[ProductController::class, 'delete']);
+
+
     //for userinfo
-    Route::get('/userinfo',[PassportAuthController::class, 'UserInfo']);
-    //for create product
-    Route::post('/createproduct',[ProductController::class, 'store']);
-    //for show all data 
-    Route::get('/products',[ProductController::class, 'index']);
-    //for show one product
-    Route::get('/showproduct/{id}',[ProductController::class, 'show']);
-    //for update product
-    Route::put('/updateproduct/{id}',[ProductController::class, 'update']);
-    //for delete product
-    Route::delete('/deleteproduct/{id}',[ProductController::class, 'delete']);
+    Route::resource('/userinfo',PassportAuthController::class);
+    //for do all CRUP Operation on product
+    Route::resource('/product',ProductController::class);
 
 });

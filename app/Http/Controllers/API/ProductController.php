@@ -41,7 +41,7 @@ class ProductController extends Controller
     }
 
     // the show and update and delete method depend on id.
-    public function show(string $id){
+    public function show(Product $id){
         $SpecificProduct = Product::find($id);
         if(is_null($SpecificProduct)){    // this condition for check if product is found or not found.
             return response()->json([
@@ -85,7 +85,7 @@ class ProductController extends Controller
         }
     }
 
-    public function delete(string $id){
+    public function destroy(string $id){
         $product = Product::findOrFail($id);
         $product->delete();
         //Product::deleted($id);
